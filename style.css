@@ -1,0 +1,369 @@
+* { box-sizing: border-box; }
+
+body {
+  background: #ffffff;
+  color: #1d1d1f;
+  font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
+  margin: 0;
+  padding: 24px 32px 48px;
+}
+
+.sheet-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.sheet-header h1 {
+  font-size: 28px;
+  margin: 0;
+  font-weight: 700;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: #6e6e73;
+  margin: 4px 0 0;
+}
+
+.note {
+  font-size: 13px;
+  color: #86868b;
+  margin: 4px 0 0;
+}
+
+.legend {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+  font-size: 12px;
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot-home { background: #34C759; }
+.dot-away { background: #FF9500; }
+.dot-mother { background: #5856D6; }
+.dot-backup { background: #AF52DE; }
+
+.data-toolbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.save-status {
+  font-size: 12px;
+  color: #86868b;
+  min-width: 170px;
+  text-align: right;
+}
+
+.save-status.status-saved {
+  color: #1d7f3d;
+  font-weight: 600;
+}
+
+.save-status.status-cloud {
+  color: #1d6fd4;
+  font-weight: 600;
+}
+
+.save-status.status-local {
+  color: #8a6400;
+  font-weight: 600;
+}
+
+.save-status.status-error {
+  color: #a8341f;
+  font-weight: 600;
+}
+
+.app-version {
+  font-size: 10px;
+  color: #b0b0b5;
+}
+
+.data-btn {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 8px;
+  border: 1px solid #d2d2d7;
+  background: #f5f5f7;
+  color: #1d1d1f;
+  cursor: pointer;
+}
+
+.data-btn:hover {
+  background: #e8e8ed;
+}
+
+.month-sheet {
+  page-break-after: always;
+  margin-bottom: 40px;
+  border: 1px solid #e5e5ea;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.month-title-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0 12px;
+}
+
+.month-title {
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  margin: 0;
+}
+
+.print-btn {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 8px;
+  border: 1px solid #d2d2d7;
+  background: #f5f5f7;
+  color: #1d1d1f;
+  cursor: pointer;
+}
+
+.print-btn:hover {
+  background: #e8e8ed;
+}
+
+.weekday-row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.weekday-row span {
+  text-align: center;
+  font-size: 11px;
+  color: #6e6e73;
+  font-weight: 600;
+}
+
+.day-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+}
+
+.day {
+  border: 1px solid #e5e5ea;
+  border-radius: 8px;
+  min-height: 210px;
+  padding: 5px;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.day-grid-table {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  row-gap: 2px;
+  column-gap: 4px;
+  align-items: center;
+  font-size: 9px;
+}
+
+.grid-row {
+  display: contents;
+}
+
+.grid-row .part-label {
+  font-weight: 600;
+  color: #1d1d1f;
+  white-space: nowrap;
+}
+
+.grid-header .col-title {
+  font-weight: 600;
+  color: #6e6e73;
+  text-align: center;
+  padding: 0 2px;
+  border-bottom: 1px solid #d2d2d7;
+}
+
+.col-cell {
+  text-align: center;
+}
+
+.col-cell input[type="checkbox"],
+.grid-row input[type="checkbox"] {
+  width: 11px;
+  height: 11px;
+  margin: 0;
+}
+
+.backup-field {
+  margin-top: 3px;
+}
+
+.day.weekend {
+  background: #fafafa;
+}
+
+.day.nacht-away {
+  background: #e3f0ff;
+  border-color: #9cc4f5;
+}
+
+.day.empty {
+  border: none;
+  background: transparent;
+}
+
+.day-num {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1d1d1f;
+}
+
+.field {
+  font-size: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.field label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.field input[type="checkbox"] {
+  width: 11px;
+  height: 11px;
+  margin: 0;
+}
+
+.field input[type="text"] {
+  width: 100%;
+  font-size: 10px;
+  border: none;
+  border-bottom: 1px solid #d2d2d7;
+  padding: 1px 2px;
+}
+
+.print-footer {
+  text-align: center;
+  font-size: 11px;
+  color: #86868b;
+  margin-top: 16px;
+}
+
+@media print {
+  .month-sheet { border: none; }
+  .print-btn { display: none; }
+  .data-toolbar { display: none; }
+}
+
+/* Einzelmonat-Druck: A4 Querformat, Platz optimiert */
+/* explizite mm-Masse statt "A4 landscape", da manche Browser (z.B. Safari)
+   das Schluesselwort "landscape" beim PDF-Export ignorieren */
+@page {
+  size: 297mm 210mm;
+  margin: 8mm;
+}
+
+@media print {
+  html, body {
+    width: 297mm;
+    height: 210mm;
+  }
+
+  body.print-single-month {
+    padding: 0;
+    overflow: hidden;
+  }
+
+  body.print-single-month .sheet-header,
+  body.print-single-month .print-footer {
+    display: none;
+  }
+
+  body.print-single-month .month-sheet {
+    display: none;
+  }
+
+  body.print-single-month .month-sheet.print-active {
+    display: flex;
+    flex-direction: column;
+    page-break-after: auto;
+    margin: 0;
+    padding: 0;
+    border: none;
+    /* feste Hoehe = Seitenhoehe minus Seitenraender (8mm oben/unten) */
+    width: 281mm;
+    height: 194mm;
+    overflow: hidden;
+  }
+
+  body.print-single-month .month-sheet.print-active .month-title-row {
+    margin-bottom: 4mm;
+  }
+
+  body.print-single-month .month-sheet.print-active .month-title {
+    font-size: 16px;
+  }
+
+  body.print-single-month .month-sheet.print-active .weekday-row span {
+    font-size: 10px;
+  }
+
+  body.print-single-month .month-sheet.print-active .day-grid {
+    flex: 1;
+    min-height: 0;
+    gap: 2mm;
+    grid-auto-rows: 1fr;
+  }
+
+  body.print-single-month .month-sheet.print-active .day {
+    min-height: 0;
+    padding: 2mm;
+  }
+
+  body.print-single-month .month-sheet.print-active .day-grid-table {
+    font-size: 8px;
+  }
+
+  body.print-single-month .month-sheet.print-active .day-num {
+    font-size: 11px;
+  }
+
+  body.print-single-month .month-sheet.print-active .field,
+  body.print-single-month .month-sheet.print-active .field input[type="text"] {
+    font-size: 8px;
+  }
+}

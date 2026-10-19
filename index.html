@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Familienplan Okt - Dez 2026</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<header class="sheet-header">
+  <h1>Familienplan</h1>
+  <p class="subtitle">Oktober - Dezember 2026</p>
+  <p class="note">Wo ist Papa tagsueber - und wer ist nachts bei den Kindern?</p>
+  <div class="legend">
+    <span class="legend-item">Pro Tageszeit ankreuzen: Papa <strong>zuhause</strong> oder <strong>weg</strong></span>
+    <span class="legend-item">Nacht-Betreuung ankreuzen: <strong>Mami</strong> oder <strong>Simeo</strong></span>
+  </div>
+  <div class="data-toolbar" id="data-toolbar"></div>
+</header>
+
+<main id="calendar-root">
+  <section class="month-sheet" id="month-2026-10"></section>
+  <section class="month-sheet" id="month-2026-11"></section>
+  <section class="month-sheet" id="month-2026-12"></section>
+</main>
+
+<footer class="print-footer">
+  <p>Eintraege werden automatisch gespeichert und bleiben beim naechsten Oeffnen erhalten.</p>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-check-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-database-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-auth-compat.js"></script>
+<script src="./firebase-config.js?v=1"></script>
+<script src="./store.js?v=1"></script>
+<script src="./script.js?v=1"></script>
+<script src="./toolbar.js?v=1"></script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+# macOS
+.DS_Store
+
+# Node (nur fuer lokale Tests, nicht fuer die Seite noetig)
+node_modules/
