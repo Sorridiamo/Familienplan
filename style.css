@@ -179,7 +179,7 @@ body {
 .day {
   border: 1px solid #e5e5ea;
   border-radius: 8px;
-  min-height: 210px;
+  min-height: 250px;
   padding: 5px;
   background: #ffffff;
   display: flex;
@@ -351,11 +351,11 @@ body {
 
   body.print-single-month .month-sheet.print-active .day {
     min-height: 0;
-    padding: 2mm;
+    padding: 1.5mm;
   }
 
   body.print-single-month .month-sheet.print-active .day-grid-table {
-    font-size: 8px;
+    font-size: 6.5px;
   }
 
   body.print-single-month .month-sheet.print-active .day-num {

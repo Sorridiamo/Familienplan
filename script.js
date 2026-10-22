@@ -14,7 +14,7 @@ function mondayFirstWeekday(year, monthIndex, day) {
   return jsDay === 0 ? 6 : jsDay - 1; // 0=Mon..6=Sun
 }
 
-const DAY_PARTS = ["Vormittag", "Mittag", "Nachmittag", "Nacht"];
+const DAY_PARTS = ["Vormittag", "Mittag", "Nachmittag", "Abend", "Nachtessen", "Nacht"];
 
 function dateKeyOf(year, monthIndex, day) {
   const m = String(monthIndex + 1).padStart(2, "0");
