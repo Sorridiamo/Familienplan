@@ -1,6 +1,5 @@
-/* toolbar.js — Status- und Datenverwaltung fuer den Familienplan.
-   Zeigt an, dass gespeichert wurde, und erlaubt Sicherung / Wiederherstellung
-   der Eintraege als Datei (zum Weitergeben oder auf einen anderen Rechner). */
+/* toolbar.js — Statusanzeige fuer den Familienplan.
+   Zeigt an, ob gerade in der Cloud oder nur lokal gespeichert wird. */
 
 (function () {
   var bar = document.getElementById("data-toolbar");
@@ -49,55 +48,4 @@
     ver.textContent = APP_VERSION;
     bar.appendChild(ver);
   }
-
-  function addButton(label, handler) {
-    var btn = document.createElement("button");
-    btn.type = "button";
-    btn.className = "data-btn";
-    btn.textContent = label;
-    btn.addEventListener("click", handler);
-    bar.appendChild(btn);
-    return btn;
-  }
-
-  addButton("Sicherung speichern", function () {
-    var blob = new Blob([FamStore.exportJson()], { type: "application/json" });
-    var url = URL.createObjectURL(blob);
-    var a = document.createElement("a");
-    a.href = url;
-    a.download = "familienplan-sicherung.json";
-    a.click();
-    URL.revokeObjectURL(url);
-  });
-
-  var fileInput = document.createElement("input");
-  fileInput.type = "file";
-  fileInput.accept = "application/json,.json";
-  fileInput.style.display = "none";
-  fileInput.addEventListener("change", function () {
-    var file = fileInput.files && fileInput.files[0];
-    if (!file) return;
-    var reader = new FileReader();
-    reader.onload = function () {
-      try {
-        FamStore.importJson(String(reader.result));
-        applyStateToDom();
-      } catch (e) {
-        window.alert("Die Datei konnte nicht gelesen werden: " + e.message);
-      }
-    };
-    reader.readAsText(file);
-    fileInput.value = "";
-  });
-  bar.appendChild(fileInput);
-
-  addButton("Sicherung laden", function () {
-    fileInput.click();
-  });
-
-  addButton("Alles zuruecksetzen", function () {
-    if (!window.confirm("Wirklich alle Eintraege loeschen? Das gilt auch fuer alle anderen Geraete und kann nicht rueckgaengig gemacht werden.")) return;
-    FamStore.clearAll();
-    applyStateToDom();
-  });
 })();

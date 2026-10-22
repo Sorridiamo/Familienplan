@@ -13,51 +13,6 @@ body {
   margin-bottom: 24px;
 }
 
-.sheet-header h1 {
-  font-size: 28px;
-  margin: 0;
-  font-weight: 700;
-}
-
-.subtitle {
-  font-size: 16px;
-  color: #6e6e73;
-  margin: 4px 0 0;
-}
-
-.note {
-  font-size: 13px;
-  color: #86868b;
-  margin: 4px 0 0;
-}
-
-.legend {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  margin-top: 14px;
-  font-size: 12px;
-}
-
-.legend-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-.dot-home { background: #34C759; }
-.dot-away { background: #FF9500; }
-.dot-mother { background: #5856D6; }
-.dot-backup { background: #AF52DE; }
-
 .data-toolbar {
   display: flex;
   justify-content: center;
@@ -99,21 +54,6 @@ body {
   color: #b0b0b5;
 }
 
-.data-btn {
-  font-size: 12px;
-  font-weight: 600;
-  padding: 6px 14px;
-  border-radius: 8px;
-  border: 1px solid #d2d2d7;
-  background: #f5f5f7;
-  color: #1d1d1f;
-  cursor: pointer;
-}
-
-.data-btn:hover {
-  background: #e8e8ed;
-}
-
 .month-sheet {
   page-break-after: always;
   margin-bottom: 40px;
@@ -131,7 +71,7 @@ body {
 }
 
 .month-title {
-  font-size: 20px;
+  font-size: 28px;
   font-weight: 700;
   text-align: center;
   margin: 0;
@@ -154,20 +94,6 @@ body {
 
 .print-btn:hover {
   background: #e8e8ed;
-}
-
-.weekday-row {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 6px;
-  margin-bottom: 6px;
-}
-
-.weekday-row span {
-  text-align: center;
-  font-size: 11px;
-  color: #6e6e73;
-  font-weight: 600;
 }
 
 .day-grid {
@@ -243,10 +169,22 @@ body {
   background: transparent;
 }
 
+.day-num-row {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+}
+
 .day-num {
   font-size: 13px;
   font-weight: 700;
   color: #1d1d1f;
+}
+
+.day-weekday {
+  font-size: 10px;
+  font-weight: 600;
+  color: #6e6e73;
 }
 
 .field {
@@ -338,8 +276,8 @@ body {
     font-size: 16px;
   }
 
-  body.print-single-month .month-sheet.print-active .weekday-row span {
-    font-size: 10px;
+  body.print-single-month .month-sheet.print-active .day-weekday {
+    font-size: 9px;
   }
 
   body.print-single-month .month-sheet.print-active .day-grid {

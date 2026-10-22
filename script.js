@@ -3,7 +3,7 @@ const MONTH_NAMES = [
   "Juli", "August", "September", "Oktober", "November", "Dezember"
 ];
 
-const WEEKDAY_LABELS = ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"];
+const WEEKDAY_NAMES = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"];
 
 function daysInMonth(year, monthIndex) {
   return new Date(year, monthIndex + 1, 0).getDate();
@@ -14,7 +14,7 @@ function mondayFirstWeekday(year, monthIndex, day) {
   return jsDay === 0 ? 6 : jsDay - 1; // 0=Mon..6=Sun
 }
 
-const DAY_PARTS = ["Vormittag", "Mittag", "Nachmittag", "Abend", "Nachtessen", "Nacht"];
+const DAY_PARTS = ["Vormittag", "Mittag", "Nachmittag", "Nachtessen", "Abend", "Nacht"];
 
 function dateKeyOf(year, monthIndex, day) {
   const m = String(monthIndex + 1).padStart(2, "0");
@@ -58,15 +58,25 @@ function checkRow(label, fieldA, fieldB, markWeg) {
   return row;
 }
 
-function buildDayCell(dayNumber, isWeekend, dateKey) {
+function buildDayCell(dayNumber, isWeekend, dateKey, weekdayIdx) {
   const cell = document.createElement("div");
   cell.className = "day" + (isWeekend ? " weekend" : "");
   cell.dataset.date = dateKey;
 
-  const num = document.createElement("div");
+  const numRow = document.createElement("div");
+  numRow.className = "day-num-row";
+
+  const num = document.createElement("span");
   num.className = "day-num";
   num.textContent = String(dayNumber);
-  cell.appendChild(num);
+  numRow.appendChild(num);
+
+  const weekday = document.createElement("span");
+  weekday.className = "day-weekday";
+  weekday.textContent = WEEKDAY_NAMES[weekdayIdx];
+  numRow.appendChild(weekday);
+
+  cell.appendChild(numRow);
 
   const grid = document.createElement("div");
   grid.className = "day-grid-table";
@@ -182,7 +192,7 @@ function renderMonth(containerId, year, monthIndex) {
 
   const title = document.createElement("h2");
   title.className = "month-title";
-  title.textContent = MONTH_NAMES[monthIndex] + " " + year;
+  title.textContent = MONTH_NAMES[monthIndex];
   titleRow.appendChild(title);
 
   const printBtn = document.createElement("button");
@@ -195,15 +205,6 @@ function renderMonth(containerId, year, monthIndex) {
   titleRow.appendChild(printBtn);
 
   container.appendChild(titleRow);
-
-  const weekdayRow = document.createElement("div");
-  weekdayRow.className = "weekday-row";
-  WEEKDAY_LABELS.forEach(function (label) {
-    const span = document.createElement("span");
-    span.textContent = label;
-    weekdayRow.appendChild(span);
-  });
-  container.appendChild(weekdayRow);
 
   const grid = document.createElement("div");
   grid.className = "day-grid";
@@ -218,7 +219,7 @@ function renderMonth(containerId, year, monthIndex) {
   for (let day = 1; day <= totalDays; day++) {
     const weekdayIdx = mondayFirstWeekday(year, monthIndex, day);
     const isWeekend = weekdayIdx === 5 || weekdayIdx === 6;
-    grid.appendChild(buildDayCell(day, isWeekend, dateKeyOf(year, monthIndex, day)));
+    grid.appendChild(buildDayCell(day, isWeekend, dateKeyOf(year, monthIndex, day), weekdayIdx));
   }
 
   container.appendChild(grid);
